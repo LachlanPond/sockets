@@ -4,6 +4,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 int main() {
     // Create a socket
@@ -14,7 +15,7 @@ int main() {
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(9002);
-    server_address.sin_addr.s_addr = INADDR_ANY;    // Basically the same as saying the address is localhost
+    server_address.sin_addr.s_addr = inet_addr("13.211.3.157");//INADDR_ANY;    // Basically the same as saying the address is localhost
 
     // Connect to the server
     int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));

@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 int main() {
-    char server_message[256] = "You have reached the server!";
+    char server_message[256] = "You are a simp!";
 
     // Create the server socket
     int server_socket;
