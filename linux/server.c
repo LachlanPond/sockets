@@ -8,23 +8,23 @@
 
 int main() {
     char server_message[256] = "You are a simp!";
-    char penis_ascii[16][256];
-    strcpy(penis_ascii[0], "...............…………………………._¸„„„„_\n");
-    strcpy(penis_ascii[1], "…………………….…………...„--~*'¯…….'\n");
-    strcpy(penis_ascii[2], "………….…………………… („-~~--„¸_….,/ì'Ì\n");
-    strcpy(penis_ascii[3], "…….…………………….¸„-^\"¯ : : : : :¸-¯\"¯/'\n");
-    strcpy(penis_ascii[4], "……………………¸„„-^\"¯ : : : : : : : '\\¸„„,-\"\n");
-    strcpy(penis_ascii[5], "**¯¯¯'^^~-„„„----~^*'\"¯ : : : : : : : : : :¸-\"\n");
-    strcpy(penis_ascii[6], ".:.:.:.:.„-^\" : : : : : : : : : : : : : : : : :„-\"\n");
-    strcpy(penis_ascii[7], ":.:.:.:.:.:.:.:.:.:.: : : : : : : : : : ¸„-^¯\n");
-    strcpy(penis_ascii[8], ".::.:.:.:.:.:.:.:. : : : : : : : ¸„„-^¯\n");
-    strcpy(penis_ascii[9], ":.' : : '\\ : : : : : : : ;¸„„-~\"\n");
-    strcpy(penis_ascii[10], ":.:.:: :\"-„\"\"***/*'ì¸'¯\n");
-    strcpy(penis_ascii[11], ":.': : : : :\"-„ : : :\"\\\n");
-    strcpy(penis_ascii[12], ".:.:.: : : : :\" : : : : \\,\n");
-    strcpy(penis_ascii[13], ":.: : : : : : : : : : : : 'Ì\n");
-    strcpy(penis_ascii[14], ": : : : : : :, : : : : : :/\n");
-    strcpy(penis_ascii[15], "\"-„_::::_„-*__„„~\"\n");
+    char penis_ascii[4096] = "";
+    strcat(penis_ascii, "...............…………………………._¸„„„„_\n");
+    strcat(penis_ascii, "…………………….…………...„--~*'¯…….'\n");
+    strcat(penis_ascii, "………….…………………… („-~~--„¸_….,/ì'Ì\n");
+    strcat(penis_ascii, "…….…………………….¸„-^\"¯ : : : : :¸-¯\"¯/'\n");
+    strcat(penis_ascii, "……………………¸„„-^\"¯ : : : : : : : '\\¸„„,-\"\n");
+    strcat(penis_ascii, "**¯¯¯'^^~-„„„----~^*'\"¯ : : : : : : : : : :¸-\"\n");
+    strcat(penis_ascii, ".:.:.:.:.„-^\" : : : : : : : : : : : : : : : : :„-\"\n");
+    strcat(penis_ascii, ":.:.:.:.:.:.:.:.:.:.: : : : : : : : : : ¸„-^¯\n");
+    strcat(penis_ascii, ".::.:.:.:.:.:.:.:. : : : : : : : ¸„„-^¯\n");
+    strcat(penis_ascii, ":.' : : '\\ : : : : : : : ;¸„„-~\"\n");
+    strcat(penis_ascii, ":.:.:: :\"-„\"\"***/*'ì¸'¯\n");
+    strcat(penis_ascii, ":.': : : : :\"-„ : : :\"\\\n");
+    strcat(penis_ascii, ".:.:.: : : : :\" : : : : \\,\n");
+    strcat(penis_ascii, ":.: : : : : : : : : : : : 'Ì\n");
+    strcat(penis_ascii, ": : : : : : :, : : : : : :/\n");
+    strcat(penis_ascii, "\"-„_::::_„-*__„„~\"\n");
 
     // Create the server socket
     int server_socket;
