@@ -21,14 +21,16 @@ int main() {
     // Bind the socket to our specified IP and port
     bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
 
-    int number_of_allowed_connections = 5;
-    listen(server_socket, number_of_allowed_connections);
-
-    int client_socket;
-    client_socket = accept(server_socket, NULL, NULL);
-
-    // Send the message to the client
-    send(client_socket, server_message, sizeof(server_message), 0);
+    while(1) {
+        int number_of_allowed_connections = 5;
+        listen(server_socket, number_of_allowed_connections);
+    
+        int client_socket;
+        client_socket = accept(server_socket, NULL, NULL);
+    
+        // Send the message to the client
+        send(client_socket, server_message, sizeof(server_message), 0);
+    }
 
     // Close the socket
     close(server_socket);
