@@ -46,10 +46,8 @@ int main() {
         int client_socket;
         client_socket = accept(server_socket, NULL, NULL);
 
-        for (int i = 0; i < 16; i++) {
-            // Send the message to the client
-            send(client_socket, penis_ascii, 4096, 0);
-        }
+        // Send the message to the client
+        send(client_socket, penis_ascii, 4096, 0);
     }
 
     // Close the socket
