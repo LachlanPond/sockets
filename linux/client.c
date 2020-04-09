@@ -25,12 +25,15 @@ int main() {
         printf("There was an error making a connection to the remote socket\n");
     }
 
-    // Receive data from the server
-    char server_response[256];
-    recv(network_socket, &server_response, sizeof(server_response), 0);
+    while(1) {
+        // Receive data from the server
+        char server_response[256];
+        recv(network_socket, &server_response, sizeof(server_response), 0);
+        printf("%s", server_response);
+    }
 
     // Print out the data from the server
-    printf("Data received from the server: %s\n", server_response);
+    // printf("Data received from the server: %s\n", server_response);
 
     // Close the socket
     close(network_socket);

@@ -8,7 +8,7 @@
 
 int main() {
     char server_message[256] = "You are a simp!";
-    char penis_ascii[16][300];
+    char penis_ascii[16][256];
     strcpy(penis_ascii[0], "...............…………………………._¸„„„„_\n");
     strcpy(penis_ascii[1], "…………………….…………...„--~*'¯…….'\n");
     strcpy(penis_ascii[2], "………….…………………… („-~~--„¸_….,/ì'Ì\n");
@@ -48,7 +48,7 @@ int main() {
 
         for (int i = 0; i < 16; i++) {
             // Send the message to the client
-            send(client_socket, penis_ascii[i], 300, 0);
+            send(client_socket, penis_ascii, 4096, 0);
         }
     }
 
