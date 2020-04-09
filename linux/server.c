@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -7,6 +8,23 @@
 
 int main() {
     char server_message[256] = "You are a simp!";
+    char penis_ascii[16][300];
+    strcpy(penis_ascii[0], "...............…………………………._¸„„„„_\n");
+    strcpy(penis_ascii[1], "…………………….…………...„--~*'¯…….'\n");
+    strcpy(penis_ascii[2], "………….…………………… („-~~--„¸_….,/ì'Ì\n");
+    strcpy(penis_ascii[3], "…….…………………….¸„-^\"¯ : : : : :¸-¯\"¯/'\n");
+    strcpy(penis_ascii[4], "……………………¸„„-^\"¯ : : : : : : : '\\¸„„,-\"\n");
+    strcpy(penis_ascii[5], "**¯¯¯'^^~-„„„----~^*'\"¯ : : : : : : : : : :¸-\"\n");
+    strcpy(penis_ascii[6], ".:.:.:.:.„-^\" : : : : : : : : : : : : : : : : :„-\"\n");
+    strcpy(penis_ascii[7], ":.:.:.:.:.:.:.:.:.:.: : : : : : : : : : ¸„-^¯\n");
+    strcpy(penis_ascii[8], ".::.:.:.:.:.:.:.:. : : : : : : : ¸„„-^¯\n");
+    strcpy(penis_ascii[9], ":.' : : '\\ : : : : : : : ;¸„„-~\"\n");
+    strcpy(penis_ascii[10], ":.:.:: :\"-„\"\"***/*'ì¸'¯\n");
+    strcpy(penis_ascii[11], ":.': : : : :\"-„ : : :\"\\\n");
+    strcpy(penis_ascii[12], ".:.:.: : : : :\" : : : : \\,\n");
+    strcpy(penis_ascii[13], ":.: : : : : : : : : : : : 'Ì\n");
+    strcpy(penis_ascii[14], ": : : : : : :, : : : : : :/\n");
+    strcpy(penis_ascii[15], "\"-„_::::_„-*__„„~\"\n");
 
     // Create the server socket
     int server_socket;
@@ -27,9 +45,11 @@ int main() {
     
         int client_socket;
         client_socket = accept(server_socket, NULL, NULL);
-    
-        // Send the message to the client
-        send(client_socket, server_message, sizeof(server_message), 0);
+
+        for (int i = 0; i < 16; i++) {
+            // Send the message to the client
+            send(client_socket, penis_ascii[i], 300, 0);
+        }
     }
 
     // Close the socket
