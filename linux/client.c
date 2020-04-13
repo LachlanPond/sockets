@@ -15,7 +15,7 @@ int main() {
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(9002);
-    server_address.sin_addr.s_addr = inet_addr("52.62.229.41");//INADDR_ANY;    // Basically the same as saying the address is localhost
+    server_address.sin_addr.s_addr = INADDR_ANY;//inet_addr("52.62.229.41");    // Basically the same as saying the address is localhost
 
     // Connect to the server
     int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
@@ -26,7 +26,7 @@ int main() {
     }
 
     // Receive data from the server
-    char server_response[4096];
+    char server_response[256];
     recv(network_socket, &server_response, sizeof(server_response), 0);
 
     // Print out the data from the server

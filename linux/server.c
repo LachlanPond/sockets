@@ -7,24 +7,7 @@
 #include <unistd.h>
 
 int main() {
-    char server_message[256] = "You are a simp!";
-    char penis_ascii[4096] = "";
-    strcat(penis_ascii, "...............…………………………._¸„„„„_\n");
-    strcat(penis_ascii, "…………………….…………...„--~*'¯…….'\n");
-    strcat(penis_ascii, "………….…………………… („-~~--„¸_….,/ì'Ì\n");
-    strcat(penis_ascii, "…….…………………….¸„-^\"¯ : : : : :¸-¯\"¯/'\n");
-    strcat(penis_ascii, "……………………¸„„-^\"¯ : : : : : : : '\\¸„„,-\"\n");
-    strcat(penis_ascii, "**¯¯¯'^^~-„„„----~^*'\"¯ : : : : : : : : : :¸-\"\n");
-    strcat(penis_ascii, ".:.:.:.:.„-^\" : : : : : : : : : : : : : : : : :„-\"\n");
-    strcat(penis_ascii, ":.:.:.:.:.:.:.:.:.:.: : : : : : : : : : ¸„-^¯\n");
-    strcat(penis_ascii, ".::.:.:.:.:.:.:.:. : : : : : : : ¸„„-^¯\n");
-    strcat(penis_ascii, ":.' : : '\\ : : : : : : : ;¸„„-~\"\n");
-    strcat(penis_ascii, ":.:.:: :\"-„\"\"***/*'ì¸'¯\n");
-    strcat(penis_ascii, ":.': : : : :\"-„ : : :\"\\\n");
-    strcat(penis_ascii, ".:.:.: : : : :\" : : : : \\,\n");
-    strcat(penis_ascii, ":.: : : : : : : : : : : : 'Ì\n");
-    strcat(penis_ascii, ": : : : : : :, : : : : : :/\n");
-    strcat(penis_ascii, "\"-„_::::_„-*__„„~\"\n");
+    char server_message[256] = "You are a simp!\n";
 
     // Create the server socket
     int server_socket;
@@ -47,7 +30,7 @@ int main() {
         client_socket = accept(server_socket, NULL, NULL);
 
         // Send the message to the client
-        send(client_socket, penis_ascii, 4096, 0);
+        send(client_socket, server_message, 256, 0);
     }
 
     // Close the socket
