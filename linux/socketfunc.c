@@ -21,7 +21,7 @@ void soc_connect(socket_t *client_socket) {
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(client_socket->port);
-    server_address.sin_addr.s_addr = INADDR_ANY;
+    server_address.sin_addr.s_addr = inet_addr(client_socket->ip);
 
     // Connect to the server
     int connection_status = connect(client_socket->id, (struct sockaddr *) &server_address, sizeof(server_address));

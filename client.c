@@ -4,9 +4,24 @@
 #endif
 #include "socketfunc.h"
 
-int main() {
+int main(int argc, char *argv[]) {
     // Create a socket
     socket_t client_socket;
+
+    // Handle program input
+    if (argc == 1) {
+        print_help();
+        return 0;
+    }
+    else if (argc == 2) {
+        if (strcmp(argv[1], "h") || strcmp(argv[1], "help")) {
+            print_help();
+            return 0;
+        }
+        else {
+            soc_set_ip(&client_socket, argv[1]);
+        }
+    }
 
     // Specify an address for the socket
     soc_set_ip(&client_socket, "0.0.0.0");
@@ -22,24 +37,6 @@ int main() {
     soc_close(&client_socket);
     free(response);
     free(client_socket.msg);
-
-    // // Connect to the server
-    // int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
-    
-    // // Check for error with the connection
-    // if (connection_status == -1) {
-    //     printf("There was an error making a connection to the remote socket\n");
-    // }
-
-    // // Receive data from the server
-    // char server_response[256];
-    // recv(network_socket, &server_response, sizeof(server_response), 0);
-
-    // // Print out the data from the server
-    // printf("%s", server_response);
-
-    // // Close the socket
-    // close(network_socket);
 
     return 0;
 }

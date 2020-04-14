@@ -1,6 +1,6 @@
 # Linux setup
 INC_DIR = -Iinc -Ilinux/inc
-DEPS = linux/socketfunc.c
+DEPS = linux/socketfunc.c functions.c
 CC = gcc
 CFLAGS = -Wall
 
