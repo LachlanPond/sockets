@@ -1,4 +1,7 @@
-#include "socketfunc.h"
+#ifndef HEADER
+#define HEADER
+#include "header.h"
+#endif
 
 void soc_set_ip(socket_t *client_socket, char *ip) {
     strcpy(client_socket->ip, ip);
@@ -6,11 +9,6 @@ void soc_set_ip(socket_t *client_socket, char *ip) {
 
 void soc_set_port(socket_t *client_socket, int port) {
     client_socket->port = port;
-}
-
-void soc_set_msg(socket_t *client_socket, char *msg) {
-    client_socket->msg = malloc(strlen(msg) + 1);
-    strcpy(client_socket->msg, msg);
 }
 
 void soc_connect(socket_t *client_socket) {
@@ -30,11 +28,20 @@ void soc_connect(socket_t *client_socket) {
     if (connection_status == -1) {
         printf("There was an error making a connection to the remote socket\n");
     }
+    else {
+        printf("Conneced to %s:%d\n", client_socket->ip, client_socket->port);
+    }
 }
 
-void soc_recv(socket_t *client_socket, char **response) {
-    char *tmp = malloc(strlen(client_socket->msg) + 1);
-    recv(client_socket->id, tmp, strlen(client_socket->msg) + 1, 0);
+void soc_send(socket_t *client_socket, void *message, int message_length) {
+    if (send(client_socket->id, message, message_length, 0) < 0) {
+        printf("Failed to send message\n");
+    }
+}
+
+void soc_recv(socket_t *client_socket, void **response, int response_size) {
+    void *tmp = malloc(response_size);
+    recv(client_socket->id, tmp, response_size, 0);
     *response = tmp;
 }
 

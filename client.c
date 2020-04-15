@@ -2,11 +2,11 @@
 #define HEADER
 #include "header.h"
 #endif
-#include "socketfunc.h"
 
 int main(int argc, char *argv[]) {
     // Create a socket
     socket_t client_socket;
+    int port = 9002;
 
     // Handle program input
     if (argc == 1) {
@@ -14,29 +14,20 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     else if (argc == 2) {
-        if (strcmp(argv[1], "h") || strcmp(argv[1], "help")) {
+        if (!strcmp(argv[1], "h") || !strcmp(argv[1], "help")) {
             print_help();
             return 0;
         }
         else {
-            soc_set_ip(&client_socket, argv[1]);
+            setup_socket_connection(&client_socket, argv[1], port);
         }
     }
 
-    // Specify an address for the socket
-    soc_set_ip(&client_socket, "0.0.0.0");
-    soc_set_port(&client_socket, 9002);
-    soc_set_msg(&client_socket, "Yyu arw a simp!\n");
+    char test_message[20];
+    strcpy(test_message, "a test message ?");
+    send_message(&client_socket, test_message, 20);
 
-    soc_connect(&client_socket);
-    char *response;
-    soc_recv(&client_socket, &response);
-    printf("%s", response);
-
-    soc_set_msg(&client_socket, response);
     soc_close(&client_socket);
-    free(response);
-    free(client_socket.msg);
 
     return 0;
 }

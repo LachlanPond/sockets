@@ -1,40 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
+#ifndef HEADER
+#define HEADER
+#include "header.h"
+#endif
 
 int main() {
-    char server_message[256] = "You are a simp!\n";
+    socket_t server_socket;
+    int port = 9002;
+
+    soc_set_ip(&server_socket, "0.0.0.0");
+    soc_set_port(&server_socket, port);
 
     // Create the server socket
-    int server_socket;
-    server_socket = socket(AF_INET, SOCK_STREAM, 0);
+    server_socket.id = socket(AF_INET, SOCK_STREAM, 0);
 
     // Define the server address
     struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
-    server_address.sin_port = htons(9002);
+    server_address.sin_port = htons(server_socket.port);
     server_address.sin_addr.s_addr = INADDR_ANY;
 
     // Bind the socket to our specified IP and port
-    bind(server_socket, (struct sockaddr *) &server_address, sizeof(server_address));
+    bind(server_socket.id, (struct sockaddr *) &server_address, sizeof(server_address));
 
     while(1) {
         int number_of_allowed_connections = 5;
-        listen(server_socket, number_of_allowed_connections);
+        listen(server_socket.id, number_of_allowed_connections);
     
-        int client_socket;
-        client_socket = accept(server_socket, NULL, NULL);
+        socket_t client_socket;
+        char *message; // Needs to be freed after use
+        client_socket.id = accept(server_socket.id, NULL, NULL);
 
-        // Send the message to the client
-        send(client_socket, server_message, 256, 0);
+        receive_message(&client_socket, (void **)&message);
+        // printf("allow\n");
+        printf("message: %s\n", message);
+        free(message);
     }
 
     // Close the socket
-    close(server_socket);
+    soc_close(&server_socket);
 
     return 0;
 }
