@@ -23,9 +23,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    char test_message[20];
-    strcpy(test_message, "a test message ?");
-    send_message(&client_socket, test_message, 20);
+    send_file(&client_socket, "client");
 
     soc_close(&client_socket);
 

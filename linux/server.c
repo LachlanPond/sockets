@@ -27,13 +27,10 @@ int main() {
         listen(server_socket.id, number_of_allowed_connections);
     
         socket_t client_socket;
-        char *message; // Needs to be freed after use
         client_socket.id = accept(server_socket.id, NULL, NULL);
 
-        receive_message(&client_socket, (void **)&message);
+        receive_file(&client_socket);
         // printf("allow\n");
-        printf("message: %s\n", message);
-        free(message);
     }
 
     // Close the socket
